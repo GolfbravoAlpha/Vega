@@ -32,8 +32,19 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Controllers\Resources\**" />
+    <Compile Remove="Mapping\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Controllers\Resources\**" />
+    <Content Remove="Mapping\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Controllers\Resources\**" />
+    <EmbeddedResource Remove="Mapping\**" />
+    <None Remove="Controllers\Resources\**" />
+    <None Remove="Mapping\**" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
